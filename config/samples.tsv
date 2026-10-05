@@ -1,0 +1,44 @@
+sample	secondary_name	Description	hpi	tx	Replicate	study	technique
+ball_mock_rep1	mock_rep1		mock		1	ball2022	proseq
+ball_mock_rep2	mock_rep2		mock		2	ball2022	proseq
+ball_4hpi_rep1	4hpi_rep1		4		1	ball2022	proseq
+ball_12hpi_rep1	12hpi_rep1		12		1	ball2022	proseq
+ball_24hpi_rep1	24hpi_rep1		24		1	ball2022	proseq
+ball_48hpi_rep1	48hpi_rep1		48		1	ball2022	proseq
+ball_72hpi_rep1	72hpi_rep1		72		1	ball2022	proseq
+ball_72hpi_PFA_rep1	72hpi_PFA_rep1		72	PFA	1	ball2022	proseq
+cheng_12hpi_rep1	12hpi		12		1	cheng2017	rnaseq
+cheng_24hpi_rep1	24hpi		24		1	cheng2017	rnaseq
+cheng_48hpi_rep1	48hpi		48		1	cheng2017	rnaseq
+cheng_72hpi_rep1	72hpi		72		1	cheng2017	rnaseq
+cheng_mock12h_rep1	mock_12hpi		mock		1	cheng2017	rnaseq
+cheng_mock24h_rep1	mock_24hpi		mock		1	cheng2017	rnaseq
+cheng_mock48h_rep1	mock_48hpi		mock		1	cheng2017	rnaseq
+cheng_mock72h_rep1	mock_72hpi		mock		1	cheng2017	rnaseq
+rozman_72hpi_PFA_rep1	72hpi_PFA_rep1		72	PFA	1	rozman2022	rnaseq
+rozman_72hpi_PFA_rep2	72hpi_PFA_rep2		72	PFA	2	rozman2022	rnaseq
+rozman_72hpi_rep1	72hpi_rep1		72		1	rozman2022	rnaseq
+rozman_72hpi_rep2	72hpi_rep2		72		2	rozman2022	rnaseq
+rozman_24hpi_rep1	24hpi_rep1		24		1	rozman2022	rnaseq
+rozman_24hpi_rep2	24hpi_rep2		24		2	rozman2022	rnaseq
+rozman_12hpi_rep1	12hpi_rep1		12		1	rozman2022	rnaseq
+rozman_12hpi_rep2	12hpi_rep2		12		2	rozman2022	rnaseq
+rozman_04hpi_rep1	4hpi_rep1		04		1	rozman2022	rnaseq
+rozman_04hpi_rep2	4hpi_rep2		04		2	rozman2022	rnaseq
+rozman_48hpi_rep1	48hpi_rep1		48		1	rozman2022	rnaseq
+rozman_48hpi_rep2	48hpi_rep2		48		2	rozman2022	rnaseq
+jurges2026_02hpi_rep1	2hpi_4sU_IAA_XRN1_rep1		02		1	jurges2026	slamseq
+jurges2026_02hpi_rep2	2hpi_4sU_IAA_XRN1_rep2		02		2	jurges2026	slamseq
+jurges2026_06hpi_rep1	6hpi_4sU_IAA_XRN1_rep1		06		1	jurges2026	slamseq
+jurges2026_06hpi_rep2	6hpi_4sU_IAA_XRN1_rep2		06		2	jurges2026	slamseq
+jurges2026_12hpi_rep1	12hpi_4sU_IAA_XRN1_rep1		12		1	jurges2026	slamseq
+jurges2026_12hpi_rep2	12hpi_4sU_IAA_XRN1_rep2		12		2	jurges2026	slamseq
+jurges2026_24hpi_rep1	24hpi_4sU_IAA_XRN1_rep1		24		1	jurges2026	slamseq
+jurges2026_24hpi_rep2	24hpi_4sU_IAA_XRN1_rep2		24		2	jurges2026	slamseq
+jurges2026_48hpi_rep1	48hpi_4sU_IAA_XRN1_rep1		48		1	jurges2026	slamseq
+jurges2026_72hpi_rep1	72hpi_4sU_IAA_XRN1_rep1		72		1	jurges2026	slamseq
+jurges2026_72hpi_rep2	72hpi_4sU_IAA_XRN1_rep2		72		2	jurges2026	slamseq
+jurges2026_96hpi_rep1	96hpi_4sU_IAA_XRN1_rep1		96		1	jurges2026	slamseq
+jurges2026_72hpi_GCV_rep1	72hpi_4sU_IAA_XRN1_GCV_rep1		72	GCV	1	jurges2026	slamseq
+jurges2026_mock_rep2	Mock_4sU_IAA_XRN1_rep2		mock		2	jurges2026	slamseq
+jurges2026_mock_rep3	Mock_4sU_IAA_XRN1_rep3		mock		3	jurges2026	slamseq

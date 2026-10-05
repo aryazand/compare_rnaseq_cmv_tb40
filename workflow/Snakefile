@@ -1,0 +1,16 @@
+import os
+import pandas as pd
+
+configfile: "config/config.yaml"
+
+samples = (
+    pd.read_csv(config["samplesheet"], sep="\t", dtype={"sample": str})
+    .set_index("sample", drop=False)
+    .sort_index()
+)
+
+include: "rules/jbrowse.smk"
+
+rule all:
+    input:
+        "results/jbrowse/config.json",

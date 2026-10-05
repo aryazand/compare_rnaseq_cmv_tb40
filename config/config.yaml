@@ -1,0 +1,33 @@
+samplesheet: "config/samples.tsv"
+
+sample_urls:
+  ball2022: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/ball2022_proseq_timeseries"
+  cheng2017: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/cheng2017_tb40_rnaseq"
+  rozman2022: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/rozman2022_tb40_rnaseq"
+  jurges2026: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/jurges2026_slamseq"
+
+genome_dir: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/ball2022_proseq_timeseries/results/genome/"
+
+color: 
+  ball2022: "red"
+  cheng2017: "green"
+  rozman2022: "blue"
+  jurges2026: "purple"
+
+jbrowse:
+  add_assembly:
+    cmv: "--alias 'cmv_tb40' --displayName 'CMV_TB40' --force"
+    human: "--alias 'human' --displayName 'Human' --force"
+  add_anno:
+    cmv: "--name CMV_TB40_Annotation --force"
+    human: "--name Human_Annotation --force"
+  add_bw:
+    ball2022: "--category 'Ball et al. 2022 PRO-seq' --force"
+    cheng2017: "--category 'Cheng et al. 2017 RNA-seq' --force"
+    rozman2022: "--category 'Rozman et al. 2022 RNA-seq' --force"
+    jurges2026: "--category 'Jurges et al. 2026 SLAM-seq' --force"
+  add_cram:
+    ball2022: "--category 'Ball et al. 2022 PRO-seq' --force"
+    cheng2017: "--category 'Cheng et al. 2017 RNA-seq' --force"
+    rozman2022: "--category 'Rozman et al. 2022 RNA-seq' --force"
+    jurges2026: "--category 'Jurges et al. 2026 SLAM-seq' --force"
