@@ -95,6 +95,7 @@ rule jbrowse_add_bw:
             sample=samples[samples.study == wc.study]["secondary_name"],
             genome=wc.genome
         ),
+        display_names=lambda wc: list(samples[samples.study == wc.study]["sample"]),
         url_prefix=lambda wc: config["sample_urls"][wc.study],
         color=lambda wc: config["color"][wc.study],
         extra=lambda wc: config["jbrowse"]["add_bw"][wc.study],
@@ -105,31 +106,33 @@ rule jbrowse_add_bw:
         (
             cp {input.config} {output.config}
 
-            for i in {params.plus_bw}; do
+            display_names=({params.display_names})
+            plus_bws=({params.plus_bw})
+            minus_bws=({params.minus_bw})
 
-                # Get url/path to annotation files
-                path_to_bw="{params.url_prefix}/$i"
+            length=${{#display_names[@]}}
 
-                # Add to jbrowse
-                jbrowse add-track $path_to_bw \
+            for ((i = 0; i < length; i++)); do
+
+                samplename="${{display_names[$i]}}"
+                plus_bw="${{plus_bws[$i]}}"
+                minus_bw="${{minus_bws[$i]}}"
+
+                path_to_plus_bw="{params.url_prefix}/${{plus_bw}}"
+                path_to_minus_bw="{params.url_prefix}/${{minus_bw}}"
+
+                jbrowse add-track $path_to_plus_bw \
                     --target {output.config} \
-                    --name "${{i##*/}}" \
+                    --name ${{samplename}}_plus_bw \
                     --assemblyNames {wildcards.genome} \
-                    --config '{{"displays":[{{"type":"LinearWiggleDisplay", "color":"{params.color}"}}]}}' \
+                    --config '{{"displays":[{{"type":"LinearWiggleDisplay","color":"{params.color}"}}]}}' \
                     {params.extra}
-            done
 
-            for i in {params.minus_bw}; do
-
-                # Get url/path to annotation files
-                path_to_bw="{params.url_prefix}/$i"
-
-                # Add to jbrowse
-                jbrowse add-track $path_to_bw \
+                jbrowse add-track $path_to_minus_bw \
                     --target {output.config} \
-                    --name "${{i##*/}}" \
+                    --name ${{samplename}}_minus_bw \
                     --assemblyNames {wildcards.genome} \
-                    --config '{{"displays":[{{"type":"LinearWiggleDisplay", "inverted": true, "color":"{params.color}"}}]}}' \
+                    --config '{{"displays":[{{"type":"LinearWiggleDisplay","inverted":true,"color":"{params.color}"}}]}}' \
                     {params.extra}
             done
 
@@ -159,6 +162,7 @@ rule jbrowse_add_cram:
             sample=samples[samples.study == wc.study]["secondary_name"],
             genome=wc.genome
         ),
+        display_names=lambda wc: list(samples[samples.study == wc.study]["sample"]),
         url_prefix=lambda wc: config["sample_urls"][wc.study],
         extra=lambda wc: config["jbrowse"]["add_cram"][wc.study],
     message:
@@ -167,16 +171,21 @@ rule jbrowse_add_cram:
         """
         (            
             cp {input.config} {output.config}
-            for i in {params.cram}; do
+            display_names=({params.display_names})
+            cram_files=({params.cram})
+            length=${{#display_names[@]}}
 
-                # Get url/path to annotation files
-                path_to_cram="{params.url_prefix}/$i"
+            for ((i = 0; i < length; i++)); do
+
+                samplename="${{display_names[$i]}}"
+                cram="${{cram_files[$i]}}"
+                path_to_cram="{params.url_prefix}/${{cram}}"
 
                 # Add to jbrowse
                 jbrowse add-track $path_to_cram \
                     --indexFile $i.crai \
                     --target {output.config} \
-                    --name "${{i##*/}}" \
+                    --name ${{samplename}}_cram \
                     --assemblyNames {wildcards.genome} \
                     --config '{{"displays":[{{"type":"LinearPileupDisplay", "showLegend": true, "colorBySetting": {{"type": "stranded"}}}}]}}' \
                     {params.extra}
