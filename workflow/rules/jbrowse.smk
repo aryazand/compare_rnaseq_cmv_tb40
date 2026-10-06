@@ -129,7 +129,7 @@ rule jbrowse_add_bw:
                     --target {output.config} \
                     --name "${{i##*/}}" \
                     --assemblyNames {wildcards.genome} \
-                    --config '{{"displays":[{{"type":"LinearWiggleDisplay", "color":"{params.color}"}}]}}' \
+                    --config '{{"displays":[{{"type":"LinearWiggleDisplay", "inverted": true, "color":"{params.color}"}}]}}' \
                     {params.extra}
             done
 
