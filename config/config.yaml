@@ -4,7 +4,7 @@ sample_urls:
   ball2022: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/ball2022_proseq_timeseries"
   cheng2017: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/cheng2017_tb40_rnaseq"
   rozman2022: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/rozman2022_tb40_rnaseq"
-  jurges2026: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/jurges2026_slamseq"
+  jurges2026: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/jurges2026-tb40-slamseq"
 
 genome_dir: "https://js2.jetstream-cloud.org:8001/swift/v1/zandvakili-cmv-rna-seq/ball2022_proseq_timeseries/results/genome/"
 
