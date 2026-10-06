@@ -54,8 +54,8 @@ rule jbrowse_add_anno:
         (
 
             # Get url/path to annotation files
-            path_to_gff="{params.url_prefix}{wildcards.genome}.gff.gz"
-            path_to_tbi="{params.url_prefix}{wildcards.genome}.gff.gz.tbi"
+            path_to_gff="{params.url_prefix}{wildcards.genome}.sorted.gff.gz"
+            path_to_tbi="{params.url_prefix}{wildcards.genome}.sorted.gff.gz.tbi"
 
             # add to jbrowse
             cp {input.config} {output.config}
