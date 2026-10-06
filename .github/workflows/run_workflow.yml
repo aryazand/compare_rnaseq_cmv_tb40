@@ -1,0 +1,101 @@
+# .github/workflows/run_workflow.yml
+name: Deploy JBrowse2 Display
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Linting
+        uses: snakemake/snakemake-github-action@v2
+        with:
+          directory: "."
+          snakefile: "workflow/Snakefile"
+          args: "--lint"
+
+  snakemake:
+    name: Run Snakemake
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    needs: [lint]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Snakemake
+        uses: snakemake/snakemake-github-action@v2
+        with:
+          directory: "."
+          snakefile: "workflow/Snakefile"
+          install-apptainer: "true"
+          args: >-
+            --sdm conda
+            --cores all
+
+      # Upload config.json so the website job (ubuntu-latest runner) can access it.
+      - name: Upload JBrowse config artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jbrowse-config
+          path: results/jbrowse/config.json
+          retention-days: 1
+
+  website:
+    name: Create and Publish Website
+    runs-on: ubuntu-latest
+    needs: [snakemake]
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install JBrowse CLI
+        run: npm install -g @jbrowse/cli
+
+      - name: Download latest JBrowse2 web app
+        run: |
+          jbrowse create jbrowse2-app
+          echo "JBrowse2 version: $(cat jbrowse2-app/version.txt)"
+
+      # Pull the config.json produced by Snakemake into the JBrowse app directory,
+      # replacing the default empty config that `jbrowse create` generates.
+      - name: Download JBrowse config artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jbrowse-config
+          path: jbrowse2-app   # overwrites jbrowse2-app/config.json
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: jbrowse2-app   # entire JBrowse app + your config.json
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
