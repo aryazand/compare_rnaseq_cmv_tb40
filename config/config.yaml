@@ -25,9 +25,9 @@ jbrowse:
     ball2022: "--category 'Ball et al. 2022 PRO-seq' --force"
     cheng2017: "--category 'Cheng et al. 2017 RNA-seq' --force"
     rozman2022: "--category 'Rozman et al. 2022 RNA-seq' --force"
-    jurges2026: "--category 'Jurges et al. 2026 SLAM-seq' --force"
+    jurges2026: "--category 'Jurges et al. 2026 SLAM-dRNA-seq' --force"
   add_cram:
     ball2022: "--category 'Ball et al. 2022 PRO-seq' --force"
     cheng2017: "--category 'Cheng et al. 2017 RNA-seq' --force"
     rozman2022: "--category 'Rozman et al. 2022 RNA-seq' --force"
-    jurges2026: "--category 'Jurges et al. 2026 SLAM-seq' --force"
+    jurges2026: "--category 'Jurges et al. 2026 SLAM-dRNA-seq' --force"
