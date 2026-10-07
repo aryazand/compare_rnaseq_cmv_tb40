@@ -1,0 +1,28 @@
+flowchart TD
+    
+    A["Human lung fibroblasts (MRC-5) infected with CMV TB40 at MOI of 1"] 
+
+    subgraph RNAprep ["RNA Isolation"]
+        direction LR
+        B(RNA isolation<br/> with ZR-Duet Kit) -->
+        C(DNAse Treatment) --> 
+        D(RNA repurification<br/> with Machery-Nagel<br/> RNA II Kit) -->
+        E("poly(A) selection")
+    end
+    
+    subgraph Adapters ["Adapters & Amplification"]
+        direction LR
+        F(chemically sheared) -->
+        G(reverse transcription) --> 
+        H(adapter ligation) --> 
+        I(PCR amplification <br/> barcode added<br/> at last cycle)
+    end
+
+    subgraph Seq ["Sequencing"]
+        direction LR
+        J(Samples multiplexed) -->
+        K(Sequencing<br/> on MiSeq or HiSeq) -->
+        L(Demultiplexed<br/> to produced FASTQ files<br/> deposited in NCBI)
+    end 
+
+    A --> RNAprep --> Adapters --> Seq

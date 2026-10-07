@@ -1,0 +1,23 @@
+flowchart TD
+    
+    A["HFF (ATCC) infected with CMV TB40 at MOI of 1"] 
+
+    subgraph RNAprep ["RNA Isolation"]
+        direction LR
+        B(total RNA was extracted by phase separation) -->
+        C("poly(A) selection was performed using Invitrogen Dynabeads mRNA DIRECT Purification Kit") --> 
+        D(DNAse I treatment)
+    end
+    
+    subgraph Adapters ["Adapters & Amplification"]
+        direction LR
+        F("3' dephosphorylation using FastAP Thermosensitive Alkaline Phosphatase (Thermo Scientific) and T4 PNK (NEB") -->
+        G(3' adaptor ligation using T4 ligase) --> 
+        H(reverse transcription with SSIII) --> 
+        I(cDNA products were 3' ligated with a second adaptor using T4 ligase) -->
+        J(amplified with 8 cycles of PCR for final library products of 200–300 base pairs)
+    end
+
+    Seq(Single-End sequencing on Novaseq 6000)
+
+    A --> RNAprep --> Adapters --> Seq

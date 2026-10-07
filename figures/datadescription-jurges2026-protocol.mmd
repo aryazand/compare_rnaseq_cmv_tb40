@@ -1,0 +1,24 @@
+flowchart TD
+    
+    A[Primary HFF infected at MOI of 10 ] 
+
+    subgraph SLAM-labeling
+        direction LR
+        B(cells exposed to 4sU for 1 hr prior to lysis) --> C(Cells were lysed in 1mL Trizol and RNA extrated with Zol RNA Miniprep Plus kit)
+        C --> D(RNA was treated with IAA for 15 min to alkylate 4sU)
+        D --> E(RNA purified with Qiagen RNeasy Minelute Cleanup Kit)
+    end
+    
+    subgraph dRNAseq
+        direction TD
+        F("3' dephosphorylation and 5'->3' exonuclease (Xrn-1) to enriched for capped RNA")
+        F --> G(decapping with RppH) --> H(Library prep with NEBNext Multiplex Small RNA Library Prep) --> I(Paired-End sequencing with Illumna NextSeq 500)
+    end
+
+    subgraph STRIPEseq
+        direction TD
+        M("terminator exonuclease treatment")
+        M --> N(template switching reverse transcription with <b>UMI</b>) --> O(PCR Amplication) --> P(Size selection) --> R(Paired-End Sequencing with DNBSeq-G400 platform at BGI Tech Solutions) 
+    end
+
+    A --> SLAM-labeling --> dRNAseq & STRIPEseq

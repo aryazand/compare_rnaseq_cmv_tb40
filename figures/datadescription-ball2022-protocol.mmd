@@ -1,0 +1,22 @@
+flowchart TD
+    
+    A[Primary HFF infected with CMV TB40-BAC4 at MOI of 3 ] 
+
+    subgraph Runon ["Nuclear Run-on Steps"]
+        direction LR
+        B(nuclei were isolated) -->
+        C(~100k Sf1 Moth Nuclei spike-in added) --> 
+        D(10 min nuclear run-on with biotinylated NTPs) -->
+        E(Trizol RNA extraction)
+    end
+    
+    subgraph Seq ["Sequencing Steps"]
+        direction LR
+        F(RNA base hydrolysis) --> 
+        G(streptavidin-affinity selection) --> 
+        H(Reverse transcription + adapter ligation with 8 nt UMIs) -->
+        I(PCR amplification) -->  
+        J(Paired-End sequencing with Illumna Illumina HiSeq 4000)
+    end
+
+    A --> Runon --> Seq
