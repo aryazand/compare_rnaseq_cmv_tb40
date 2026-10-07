@@ -124,6 +124,7 @@ rule jbrowse_add_bw:
                 jbrowse add-track $path_to_plus_bw \
                     --target {output.config} \
                     --name ${{samplename}}_plus_bw \
+                    --trackId ${{samplename}}_{wildcards.genome}_plus_bw \
                     --assemblyNames {wildcards.genome} \
                     --config '{{"displays":[{{"type":"LinearWiggleDisplay","color":"{params.color}"}}]}}' \
                     {params.extra}
@@ -131,6 +132,7 @@ rule jbrowse_add_bw:
                 jbrowse add-track $path_to_minus_bw \
                     --target {output.config} \
                     --name ${{samplename}}_minus_bw \
+                    --trackId ${{samplename}}_{wildcards.genome}_minus_bw \
                     --assemblyNames {wildcards.genome} \
                     --config '{{"displays":[{{"type":"LinearWiggleDisplay","inverted":true,"color":"{params.color}"}}]}}' \
                     {params.extra}
@@ -186,6 +188,7 @@ rule jbrowse_add_cram:
                     --indexFile $i.crai \
                     --target {output.config} \
                     --name ${{samplename}}_cram \
+                    --trackId ${{samplename}}_{wildcards.genome}_cram \
                     --assemblyNames {wildcards.genome} \
                     --config '{{"displays":[{{"type":"LinearPileupDisplay", "showLegend": true, "colorBySetting": {{"type": "stranded"}}}}]}}' \
                     {params.extra}
